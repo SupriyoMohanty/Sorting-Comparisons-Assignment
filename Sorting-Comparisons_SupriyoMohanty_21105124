@@ -1,0 +1,80 @@
+# Bubble sort in Python
+
+print("BUBBLE SORT")
+def bubbleSort(array):
+   comp1=0 #variable to count number of comparisons
+   swap1=0 #variable to count number of swaps 
+   # loop to access each array element
+   for i in range(len(array)):
+     # loop to compare array elements
+     for j in range(0, len(array) - i - 1):
+       comp1+=1
+       # compare two adjacent elements
+       # change > to < to sort in descending order
+       if array[j] > array[j + 1]:
+         swap1+=1
+         # swapping elements if elements
+         # are not in the intended order
+         temp = array[j]
+         array[j] = array[j+1]
+         array[j+1] = temp
+   print('No. of comparisons in bubble sort:',comp1)
+   print('No. of swaps in bubble sort:',swap1)
+    
+
+
+data = [-2, 45, 0, 11, -9, 2]
+
+bubbleSort(data)
+
+print('Sorted Array in Ascending Order:')
+print(data)
+
+
+# Selection sort in Python
+
+print("SELECTION SORT")
+def selectionSort(array, size):
+    comp2=0 #variable to count number of comparisons
+    swap2=0 #variable to count number of swaps
+    for step in range(size):
+        min_idx = step
+
+        for i in range(step + 1, size):
+            comp2+=1 
+            # to sort in descending order, change > to < in this line
+            # select the minimum element in each loop
+            if array[i] < array[min_idx]:
+                min_idx = i
+                swap2+=1
+        
+        # put min at the correct position
+        (array[step], array[min_idx]) = (array[min_idx], array[step])
+    print('No. of comparisons in selection sort:',comp2)
+    print('No. of swaps in selection sort:',swap2)
+    
+data = [-2, 45, 0, 11, -9, 2]
+size = len(data)
+selectionSort(data, size)
+print('Sorted Array in Ascending Order:')
+print(data)
+
+#Ans1- No. of comparisons are equal for both bubble sort and selection sort
+#Ans2- No. of swaps in bubble sort is more than no. of swaps in selection sort
+#Ans3- Both bubble and selection sort are in-place algorithms and their code implementation is written above
+
+"""
+***In-place algorithms***
+1.An in-place algorithm transforms the input without using any extra memory. As the algorithm executes, the input is usually overwritten by the output, and no additional space is needed for this operation.
+2.An in-place algorithm may require a small amount of extra memory for its operation. However, the amount of memory required must not be dependent on the input size and should be constant.
+3.Several sorting algorithms rearrange the input into sorted order in-place, such as insertion sort, selection sort, quick sort, bubble sort, heap sort, etc. All these algorithms require a constant amount of extra space for rearranging the elements in the input array.
+4.Usually, an algorithm is categorized as an in-place or an out-of-place algorithm based on the explicit storage allocated by the algorithm. However, calling a recursive algorithm as in-place is highly debatable since extra space is being used by the call stack. 
+  Although this space required by the call stack technically takes the recursive algorithms out of the in-place algorithms category, the algorithms requiring only O(log(n)) additional space is considered to be in-place.
+5.In-place algorithms are usually used in an embedded system that runs in limited memory. They reduce the space requirements to a great extent, but the algorithm time complexity increases in some cases.
+
+***Out-of-place algorithms***
+1.An algorithm that is not in-place is called a not-in-place or out-of-place algorithm. Unlike an in-place algorithm, the extra space used by an out-of-place algorithm depends on the input size.
+2.The standard merge sort algorithm is an example of out-of-place algorithm as it requires O(n) extra space for merging. The merging can be done in-place, but it increases the time complexity of the sorting routine.
+"""
+
+
